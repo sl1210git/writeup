@@ -35,3 +35,21 @@ The department or company direction: Ask them what they think about where the co
 Collecting feedback: You can ask them if anyone on the team has been particularly helpful recently. Gathering this and then delivering it to that person is a simple task, but it can make people feel appreciated.
 
 Sharing a task you’re working on: People are always interested in what their managers are working on, so why not go through it together? Are you writing a job description, discussing the roadmap with your Product Manager, or working on some code of your own? Open the lid on the box and get their opinions. They’ll appreciate your sharing and will often have some valuable input.
+
+
+https://www.cognitect.com/blog/2011/11/15/documenting-architecture-decisions
+https://blog.khanacademy.org/incremental-rewrites-with-graphql/
+https://newsletter.pragmaticengineer.com/p/real-world-eng-8
+https://stripe.com/blog/online-migrations?utm_source=newsletter&utm_medium=email&utm_campaign=pragmaticengineer&utm_content=newsletter.pragmaticengineer.com
+https://newsletter.pragmaticengineer.com/p/real-world-engineering-challenges-55d
+https://newsletter.pragmaticengineer.com/p/what-is-a-staff-engineer
+
+An individual’s impact can be observed subjectively through traits such as the following:
+The software that they write: Are they solving problems efficiently with code in a way that is simple, elegant, and extensible?
+Their net contribution: Do they predominantly progress independently, setting the standard for others to follow, or do they need a lot of support from others to get their tasks done?
+Their collaboration with others: Are they team players that understand the needs, and sometimes contradictory forces within the team and find a way forward.
+Their mentorship skills: Are they natural mentors who less-experienced engineers routinely ask for help and who improve their own skills by working with them?
+Their influence on other engineers: Do they bring approaches to the table that others follow? Do they advise others outside of their own team on what we should build and how?
+Their innovative ideas: Are they suggesting new ways to use technology to enable new features, improve software speed, or reduce the cost of our software?
+Their influence on the bottom line of the business: Are they involved in solving problems in new and efficient ways that make other engineers faster (for example, by building reusable architecture) or the product cheaper (for example, by rearchitecting an existing system)?
+

@@ -1,0 +1,19 @@
+AWS Glue is a fully-managed Extract, Transform, and Load (ETL) service that makes it easy to prepare and load your data for analytics. You can use AWS Glue to parse large data files and load them into an Amazon RDS database. Here's a high-level description of how you might set this up:
+
+1. **Create the Amazon RDS Database**: The first thing you'll need is an Amazon RDS database to load the data into. You can create a new RDS database instance through the AWS Management Console. Be sure to remember your database endpoint, username, and password as you will need these later.
+
+2. **Upload your file to S3**: AWS Glue works best with files stored in Amazon S3. Upload your large CSV file to an S3 bucket. Remember the name of the bucket and the path to your file.
+
+3. **Create an IAM Role for AWS Glue**: AWS Glue needs permissions to access your S3 bucket and your RDS database. Create a new IAM role for AWS Glue through the AWS Management Console and attach policies that allow access to your S3 bucket and RDS database.
+
+4. **Create a Crawler**: A Crawler is a program that connects to a data store and creates metadata tables in the AWS Glue Data Catalog. Create a new crawler in the AWS Glue console. When configuring the crawler, provide the S3 path to your CSV file, select the IAM role you created earlier, and configure the crawler to run on demand.
+
+5. **Run the Crawler**: After creating the crawler, you can run it. Running the crawler will populate the AWS Glue Data Catalog with tables. Once the crawler has run successfully, you should see a new table in the AWS Glue console.
+
+6. **Create an ETL Job**: Now you're ready to create an ETL job. An ETL job is a set of operations that extract, transform, and load data. When creating the job in the AWS Glue console, select the table created by your crawler as the source and your RDS database as the destination. Configure the ETL job to transform the data as needed (you might not need any transformations if you're just loading the data as-is). Also, select the IAM role you created earlier for this job.
+
+7. **Run the ETL Job**: After creating the ETL job, you can run it. Running the job will read the data from your S3 bucket, perform any transformations you've specified, and then load the data into your RDS database.
+
+8. **Check the data in the RDS Database**: Once the ETL job has completed successfully, the data should be available in your RDS database. You can connect to your database using a SQL client to check the data.
+
+Remember that this is a high-level overview of the process. The specific steps and configurations might vary depending on your exact requirements. Be sure to consult the AWS Glue documentation and the Amazon RDS documentation for more detailed information.

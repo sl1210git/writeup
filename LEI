@@ -1,0 +1,5 @@
+a new data connection to support the Association of National Numbering Agencies (ANNA) and Global Legal Entity Identifier Foundation (GLEIF) initiative to link International Securities Identification Numbers (ISINs) and Legal Entity Identifiers (LEIs).
+
+The combined ANNA and GLEIF initiative, set up to increase transparency of trading exposure by connecting the issuer and issuance of securities, 
+allows market participants to aggregate the data required to gain a clear view of their securities exposure within a given issuer and its related entities. 
+This means that the LEI, relating to any ISIN, can now easily be identified - removing any uncertainty as to whether the LEI relates to the correct entity within a financial institution.

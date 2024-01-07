@@ -1,0 +1,69 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+import java.util.Map;
+
+@RestController
+@RequestMapping("/compare")
+public class DatabaseComparatorController {
+
+    private final JdbcTemplate jdbcTemplate1;
+    private final JdbcTemplate jdbcTemplate2;
+
+    @Autowired
+    public DatabaseComparatorController(JdbcTemplate jdbcTemplate1, JdbcTemplate jdbcTemplate2) {
+        this.jdbcTemplate1 = jdbcTemplate1;
+        this.jdbcTemplate2 = jdbcTemplate2;
+    }
+
+    @GetMapping("/tables")
+    public ResponseEntity<String> compareTables() {
+        List<Map<String, Object>> data1 = fetchDataFromDatabase(jdbcTemplate1);
+        List<Map<String, Object>> data2 = fetchDataFromDatabase(jdbcTemplate2);
+
+        if (data1.equals(data2)) {
+            return ResponseEntity.status(HttpStatus.OK).body("Result sets are identical.");
+        } else {
+            StringBuilder differences = new StringBuilder("Result sets have differences:\n");
+            differences.append(identifyAndListDifferences(data1, data2));
+            return ResponseEntity.status(HttpStatus.OK).body(differences.toString());
+        }
+    }
+
+    private List<Map<String, Object>> fetchDataFromDatabase(JdbcTemplate jdbcTemplate) {
+        return jdbcTemplate.queryForList("SELECT * FROM table_name");
+    }
+
+    private String identifyAndListDifferences(List<Map<String, Object>> data1, List<Map<String, Object>> data2) {
+        StringBuilder differences = new StringBuilder();
+
+        for (int i = 0; i < data1.size(); i++) {
+            Map<String, Object> row1 = data1.get(i);
+            Map<String, Object> row2 = data2.get(i);
+
+            if (!row1.equals(row2)) {
+                differences.append("Difference found at row ").append(i + 1).append("\n");
+                differences.append("Differing columns and values:\n");
+
+                for (String key : row1.keySet()) {
+                    Object value1 = row1.get(key);
+                    Object value2 = row2.get(key);
+
+                    if (!Objects.equals(value1, value2)) {
+                        differences.append("Column: ").append(key).append("\n");
+                        differences.append("Value in data set 1: ").append(value1).append("\n");
+                        differences.append("Value in data set 2: ").append(value2).append("\n");
+                    }
+                }
+            }
+        }
+
+        return differences.toString();
+    }
+}

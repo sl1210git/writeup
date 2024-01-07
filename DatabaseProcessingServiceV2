@@ -1,0 +1,56 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalTime;
+import java.util.concurrent.Executors;
+import java.util.concurrent.ScheduledExecutorService;
+import java.util.concurrent.TimeUnit;
+
+@Service
+public class DatabaseProcessingService {
+
+    @Autowired
+    private DatabaseService databaseService;
+
+    private ScheduledExecutorService executor = Executors.newScheduledThreadPool(1);
+
+    private boolean recordsFound = false;
+
+    @Scheduled(cron = "0 0 20 * * *") // Runs at 8 PM daily
+    public void startProcessing() {
+        executor.scheduleAtFixedRate(this::queryDatabase, 0, 5, TimeUnit.MINUTES);
+        // Stop querying after 9 PM
+        executor.schedule(() -> {
+            if (!recordsFound) {
+                sendEmailNoRecordsFound();
+            }
+            executor.shutdown();
+        }, 60, TimeUnit.MINUTES);
+    }
+
+    public void queryDatabase() {
+        if (!recordsFound) {
+            boolean found = databaseService.checkRecords(); // Replace with your database querying logic
+            if (found) {
+                processAndSendEmail();
+                recordsFound = true;
+                executor.shutdown();
+            } else {
+                System.out.println("No records found. Trying again at " + LocalTime.now());
+            }
+        }
+    }
+
+    private void processAndSendEmail() {
+        // Process data and send email
+        // Replace with your processing and email sending logic
+        System.out.println("Processing data and sending email...");
+    }
+
+    private void sendEmailNoRecordsFound() {
+        // Send email for no records found
+        // Replace with your email sending logic
+        System.out.println("Sending email for no records found...");
+    }
+}

@@ -1,0 +1,68 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.SimpleMailMessage;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
+
+@Component
+public class DatabaseProcessor {
+
+    @Autowired
+    private YourDatabaseService databaseService;
+
+    @Autowired
+    private JavaMailSender emailSender;
+
+    private boolean foundRecords = false;
+
+    @Scheduled(cron = "0 0 20 * * *") // Scheduled to run at 8 PM every day
+    public void processDatabaseRecords() {
+        // Query the database table
+        List<Record> records = databaseService.getRecords();
+
+        if (!records.isEmpty()) {
+            foundRecords = true;
+            // Process the records
+            processRecords(records);
+            // Send email after processing
+            sendEmail("Data Processing Complete", "The data processing has been completed.");
+        } else if (foundRecords && isTimePastNinePM()) {
+            // Send email for record not found after 9 PM
+            sendEmail("No Records Found", "No records were found after 9 PM.");
+        } else {
+            // Sleep for 5 minutes and query again
+            try {
+                TimeUnit.MINUTES.sleep(5);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+            }
+        }
+    }
+
+    private void processRecords(List<Record> records) {
+        // Your logic to process the records goes here
+        // ...
+    }
+
+    private void sendEmail(String subject, String body) {
+        SimpleMailMessage message = new SimpleMailMessage();
+        message.setSubject(subject);
+        message.setText(body);
+        message.setTo("recipient@example.com"); // Set the recipient email address here
+
+        emailSender.send(message);
+    }
+
+    private boolean isTimePastNinePM() {
+        // Check if the current time is past 9 PM
+        // You may need to implement this based on your timezone and date handling
+        // For simplicity, let's assume 9 PM as the cutoff time
+        // You can use java.time.LocalDateTime to get the current time and compare
+        // For example:
+        // LocalDateTime currentTime = LocalDateTime.now();
+        // return currentTime.getHour() >= 21; // Assuming 21 is 9 PM in 24-hour format
+        return false; // Modify this logic based on your requirements
+    }
+}

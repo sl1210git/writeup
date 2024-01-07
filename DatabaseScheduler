@@ -28,3 +28,26 @@ public class DatabaseScheduler {
         }
     }
 }
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
+public class DatabaseService {
+
+    @Autowired
+    private DatabaseRepository databaseRepository; // Assuming you have a database repository
+
+    public boolean checkForRecords() {
+        // Implement logic to check for records in the database table
+        // For example:
+        int recordCount = databaseRepository.countRecords();
+        return recordCount > 0;
+    }
+
+    public void processRecords() {
+        // Implement logic to process the records found in the database table
+        // For example:
+        databaseRepository.processRecords();
+    }
+}

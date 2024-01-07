@@ -1,0 +1,30 @@
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
+import org.springframework.stereotype.Component;
+
+@Component
+public class DatabaseScheduler {
+
+    @Autowired
+    private DatabaseService databaseService;
+
+    @Scheduled(cron = "0 0 20 * * *") // Runs at 8 PM daily
+    public void checkDatabaseAndProcess() {
+        boolean recordsFound = databaseService.checkForRecords();
+
+        if (recordsFound) {
+            // Process the data
+            databaseService.processRecords();
+        } else {
+            try {
+                // Sleep for 5 minutes (300,000 milliseconds)
+                Thread.sleep(300000);
+            } catch (InterruptedException e) {
+                Thread.currentThread().interrupt();
+                System.err.println("Error while sleeping: " + e.getMessage());
+            }
+            // Check the database again
+            checkDatabaseAndProcess();
+        }
+    }
+}

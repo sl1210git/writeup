@@ -1,0 +1,338 @@
+If you have to choose between a list, set, and a dictionary to store 10 million integers, what will you use? Bear in mind that you would later like to query the frequency of a number within the dataset.
+  Since we have to cater for multiple occurrences of a number, we can’t choose a set, since it doesn’t store duplicates by design.
+  To find the frequency of a number within a list, you will have to iterate it completely, resulting in an O(n) complexity for searching, which is inefficient.
+  A dictionary, however, lets you store key-value pairs. You can store a number as the key and the number of times it has been stored, as the value. This way, whenever you want to query the frequency, you can get the result in O(1). This makes a dictionary the best choice in this particular scenario.
+
+What are local variables and global variables in Python?
+  Global Variables:
+    Variables declared outside a function or in global space are called global variables. These variables can be accessed by any function in the program.
+  Local Variables:
+    Any variable declared inside a function is known as a local variable. This variable is present in the local space and not in the global space.
+  Example:
+  a=2 #Global Variable
+  def add():
+  b=3 #Local Variable c=a+b
+  print(c)
+  add()
+  Output: 5
+  When you try to access the local variable outside the function add(), it will throw an error.
+
+What is the difference between deep and shallow copy?
+   - Shallow copy is used when a new instance type gets created and it keeps the values that are copied in the new instance. Whereas, deep copy is used to store the values that are already copied.
+   - Shallow copy is used to copy the reference pointers just like it copies the values. These references point to the original objects and the changes made in any member of the class will also affect the original copy of it. Whereas, deep copy doesn’t copy the reference pointers to the objects. Deep copy makes the reference to an object and the new object that is pointed by some other object gets stored. The changes made in the original copy won’t affect any other copy that uses the object.
+   - Shallow copy allows faster execution of the program and it depends on the size of the data that is used. Whereas, deep copy makes it slower due to making certain copies for each object that has been called.
+
+If you have to choose between a list, set, and a dictionary to store 10 million integers, what will you use? Bear in mind that you would later like to query the frequency of a number within the dataset.
+A) Since we have to cater for multiple occurrences of a number, we can’t choose a set, since it doesn’t store duplicates by design.
+To find the frequency of a number within a list, you will have to iterate it completely, resulting in an O(n) complexity for searching, which is inefficient.
+A dictionary, however, lets you store key-value pairs. You can store a number as the key and the number of times it has been stored, as the value. This way, whenever you want to query the frequency, you can get the result in O(1). This makes a dictionary the best choice in this particular scenario.
+
+Q.1) Name a few libraries in Python used for Data Analysis and Scientific computations.
+A) NumPy, SciPy, Pandas, SciKit, Matplotlib, Seaborn
+
+Q.2) What Does The “Self” Keyword Do?
+A) The self is a Python keyword that represents a variable that holds the instance of an object.
+In almost all the object-oriented languages, it is passed to the methods as a hidden parameter.
+  
+Q.3) Which is the standard data missing marker used in Pandas?
+A) NaN
+
+Q.4) Which Python library would you prefer to use for Data Munging?
+A) Pandas
+
+Q.5) Which python library is built on top of matplotlib and Pandas to ease data plotting?
+A) Seaborn
+
+Q.6) What is pylab?
+A) A package that combines NumPy, SciPy, and Matplotlib into a single namespace.
+  
+Q.7) Name one of the most commonly used python libraries for Machine Learning?
+A) SciKit-Learn
+
+Q.8) What does _init_.py do?
+A) _init_.py is an empty py file used for importing a module in a directory.
+
+ Q.9) What is a pass in Python?
+A) Pass in Python signifies a no operation statement indicating that nothing is to be done.
+  
+Q.10) How can you check whether a pandas data frame is empty or not?
+A) The attribute df.empty is used to check whether a data frame is empty or not.
+
+Q.11) How will you reverse a list in Python?
+A) list.reverse(): This function reverses objects of list.
+
+Q.12) Do we need to declare variables with data types in Python?
+A) No. Python is a dynamically typed language, which means that Python Interpreter automatically identifies the data type of a variable based on the type of value assigned to the variable.
+  
+Q.13) Write a command to open the file c:\hello.txt for writing.
+A) f= open(“hello.txt”, “wt”)
+
+Q.14) What are the supported data types in Python?
+A) Python has five standard data types: 
+Numbers
+Strings
+Lists
+Tuples 
+Dictionaries
+
+Q.15) What is PEP8?
+A) PEP8 is a set of coding guidelines in Python language that programmers can use to write readable code which makes it easy to use for other users.
+  
+Q.16) What is pass in Python?
+A) Pass means, no-operation Python statement, or in other words it is a placeholder in a compound statement, where there should be a blank left and nothing has to be written there
+
+Q.17) What are generators in Python?
+A) The way of implementing iterators are known as generators. It is a normal function except that it yields expression in the function.
+
+Q.18) How can you copy an object in Python?
+A) To copy an object in Python, you can try copy.copy () or copy.deepcopy() for the general case. You cannot copy all objects but most of them.
+  
+Q.19) Explain how to delete a file in Python?
+A) By using a command os.remove (filename) or os.unlink(filename)
+
+Q.20) Mention the use of // operator in Python?
+A) It is a Floor Division operator, which is used for dividing two operands with the result as quotient showing only digits before the decimal point. For instance, 10//5 = 2 and 10.0//5.0 = 2.0.
+
+Q.21) What’s The Process To Get The Home Directory Using ‘~’ In Python?
+A) You need to import the os module, and then just a single line would do the rest.
+import os
+print (os.path.expanduser('~')) Output:
+/home/runner
+
+Q.22) Is There A Switch Or Case Statement In Python? If Not Then What Is The Reason For The Same?
+A) No, Python does not have a Switch statement, but you can write a Switch function and then use it.
+
+Q.23) What Is %S In Python?
+A) Python has support for formatting any value into a string. It may contain quite complex expressions.
+One of the common usages is to push values into a string with the %s format specifier. The formatting operation in Python has the comparable syntax as the C function printf() has.
+
+Q.24) Is It Mandatory For A Python Function To Return A Value?
+A) It is not at all necessary for a function to return any value. However, if needed, we can use None as a return value.
+
+Q.25) What Is The Difference Between Pass And Continue In Python?
+A) The continue statement makes the loop to resume from the next iteration.
+On the contrary, the pass statement instructs to do nothing, and the remainder of the code executes as usual.
+
+Q.1) How to convert a list into a comma-separated string?
+A) When we want to convert a list into a string, we can use the join() method which joins all the elements into one and returns as a string. Example:
+weekdays = [‘sun’,’mon’,’tue’,’wed’,’thu’,’fri’,’sat’]
+listAsString = ‘,’.join(weekdays) print(listAsString)
+output: sun,mon,tue,wed,thu,fri,sat
+Q.2) How to convert a list into a tuple?
+A) By using Python <tuple()> function we can convert a list into a tuple. But we can’t change the list after turning it into tuple, because it becomes immutable.
+Example:
+weekdays = [‘sun’,’mon’,’tue’,’wed’,’thu’,’fri’,’sat’] 
+listAsTuple = tuple(weekdays)
+print(listAsTuple)
+output: (‘sun’, ‘mon’, ‘tue’, ‘wed’, ‘thu’, ‘fri’, ‘sat’)
+Q.3) How can you create Empty NumPy Array In Python?
+A) We can create Empty NumPy Array in two ways in Python, 
+1) import numpy
+numpy.array([])
+2) numpy.empty(shape=(0,0))
+Q.4) Write a program to find the sum of the digits of a number in Python?
+A) Python Program to Find the Sum of the Digits of a Number 
+n=int(input(“Enter a number:”))
+tot=0 
+while(n>0): 
+  dig=n%10 
+  tot=tot+dig
+ n=n//10
+print(“The total sum of digits is:”,tot) Output:
+Enter a number:1928
+The total sum of digits is: 20
+Q.5) Write a Python Program to Check if a String is a Palindrome or Not?
+A) Python Program to Check if a String is a Palindrome or Not: string=raw_input(“Enter string:”)
+if(string==string[::-1]):
+print(“The string is a palindrome”) else:
+print(“The string isn’t a palindrome”) Output:
+Enter string:MALAYALAM
+The string is a palindrome
+Q.6) How Will You Print The Sum Of Numbers Starting From 1 To 100 (Inclusive Of Both)?
+A) Python Program to Print The Sum Of Numbers Starting From 1 To 100
+print sum(range(1,101))
+#range() returns a list to the sum function containing
+#all the numbers from 1 to 100. Please see that
+#the range function does not include the end given (101 here). print(sum(xrange(1, 101)))
+#xrange() returns an iterator rather than a list
+#which is less heavy in the memory.
+Q.7) How do I convert between tuples and lists?
+A) The function tuple(seq) converts any sequence (actually, any iterable) into a tuple with the same items in the same order.
+For example, tuple([1, 2, 3]) yields (1, 2, 3) and tuple(‘abc’) yields (‘a’, ‘b’, ‘c’).
+If the argument is a tuple, it does not make a copy but returns the same object, so it is cheap to call tuple() when you aren’t sure that an object is already a tuple.
+The function list(seq) converts any sequence or iterable into a list with the same items in the same order.
+For example, list((1, 2, 3)) yields [1, 2, 3] and list(‘abc’) yields [‘a’, ‘b’, ‘c’].
+If the argument is a list, it makes a copy just like seq[:] would.
+Q.8) Write a one-liner that will count the number of capital letters in a file. Your code should work even if the file is too big to fit in memory.
+A) This can be done in several ways, but considering the fact that we need a one-liner logic I suggest something like:
+with open(SOME_LARGE_FILE) as fh:
+count = sum(character.isupper() for line in fh for character in line)
+Q.9) How would you create an empty NumPy array?
+A) To create an empty array with NumPy, we have two options: a. Option 1
+>>> import numpy
+>>> numpy.array([])
+b. Option 2
+>>> numpy.empty(shape=(0,0))
+Q.10) How to add a value to a python array?
+A) Elements can be added to an array using the append(), extend() and insert (i,x) functions.
+Example:
+a=arr.array('d', [1.1 , 2.1 ,3.1] ) a.append(3.4)
+print(a)
+a.extend([4.5,6.3,6.8])
+print(a) a.insert(2,3.8) print(a)
+Output:
+array(‘d’, [1.1, 2.1, 3.1, 3.4])
+array(‘d’, [1.1, 2.1, 3.1, 3.4, 4.5, 6.3, 6.8]) array(‘d’, [1.1, 2.1, 3.8, 3.1, 3.4, 4.5, 6.3, 6.8])
+Q.11) How to remove values to a python array?
+A) Array elements can be removed using pop() or remove() method. The difference between these two functions is that the former returns the deleted value whereas the latter does not.
+Example:
+a=arr.array('d', [1.1, 2.2, 3.8, 3.1, 3.7, 1.2, 4.6]) print(a.pop())
+print(a.pop(3))
+a.remove(1.1)
+print(a) Output:
+4.6
+3.1
+array(‘d’, [2.2, 3.8, 3.7, 1.2])
+Q.12) How will you read a random line in a file?
+A) We can read a random line in a file using a module named ‘random’.
+For example:
+import random
+def read_random(fname):
+lines = open(fname).read().splitlines() return random.choice(lines) print(read_random (‘hello.txt’))
+Q.13) Given a string, write a Python program to split strings on Uppercase characters.
+A) Program to split string using re.split():
+import re
+# Initialising string ini_str = 'GarvitArya' # Printing Initial string
+print ("Initial String", ini_str)
+# Splitting on UpperCase using re
+res_list = [s for s in re.split("([A-Z][^A-Z]*)", ini_str) if s] # Printing result
+print("Resultant prefix", str(res_list))
+Q.14) Given a list of strings, write a Python program to convert the given list of strings into a space-separated string.
+A) Program to convert list into string using join() function:
+def convert(lst):
+return ' '.join(lst) # Driver code
+lst = [‘garvit’, ‘arya’] print(convert(lst))
+Q.15) Given a string and a boolean value, write a Python program to concatenate the string with a boolean value
+A) Program to concat boolean using type casting:
+# Initialising string and boolean value
+ini_string = "Facts are"
+value = True
+# Concatenate using str
+res = ini_string +" "+str(value) # Printing resultant string
+print ("Resultant String : ", res)
+Q.16) Write a program to delete all occurrences of character from a string
+A) Program to delete a character using string function:
+# initializing string
+test_str = "DataScienceIsFun"
+# initializing removal character
+rem_char = "e"
+# printing original string
+print("The original string is : " + str(test_str)) # Using replace()
+# Deleting all occurrences of character
+res = test_str.replace(rem_char, "")
+# printing result
+print("The string after character deletion : " + str(res))
+Q.17) Given a list of numbers and a variable K, where K is also a number, write a Python program using Numpy module, to find the number in a list which is closest to the given number K.
+A) Python program to find Closest number in a list:
+import numpy as np def closest(lst, K):
+lst = np.asarray(lst)
+idx = (np.abs(lst - K)).argmin() return lst[idx]
+# Driver code
+lst = [3.64, 5.2, 9.42, 9.35, 8.5, 8] K = 9.1
+print(closest(lst, K))
+Q.18) Sometimes, while working with strings, we may have situations in which we might have more than 1 space between intermediate words in strings that are mostly unwanted. How will you remove them?
+A) Program Using split() + join()
+# initializing string
+test_str = "This is a Sample" # printing original string
+print("The original string is : " + test_str) # using split() + join()
+# remove additional space from string res = " ".join(test_str.split())
+# printing result
+print("The strings after extra space removal : " + str(res))
+Q.19) Given a list, write a Python program to convert the given list to dictionary such that all the odd elements become the key,
+and even number elements become the value.
+A) Python program to Convert a list to dictionary: def Convert(lst):
+res_dct = {lst[i]: lst[i + 1] for i in range(0, len(lst), 2)}
+return res_dct
+# Driver code
+lst = ['a', 1, 'b', 2, 'c', 3] print(Convert(lst))
+Output: {'a': 1, 'b': 2, 'c': 3}
+Q.20) Given a list of integers and an integer variable K, write a Python program to find all pairs in the list with given sum K.
+A) Python program to find all pairs in a list of integers with given sum:
+def findPairs(lst, K): res = []
+while lst:
+num = lst.pop() diff = K - num if diff in lst:
+res.append((diff, num)) res.reverse()
+return res
+# Driver code
+lst = [1, 5, 3, 7, 9]
+K = 12 print(findPairs(lst, K)) Output: [(5, 7), (3, 9)]
+Q.21) While programming, sometimes, we just require a certain type of data and need to discard other. How will you Extract digits from given string?
+A) Program to extract digits from a string using re package:
+import re
+# initializing string test_string = ‘1garvit2arya3’
+# printing original strings
+print("The original string : " + test_string) # using re
+# Extract digit string
+res = re.sub("\D", "", test_string)
+# print result
+print("The digits string is : " + str(res)) Output :
+The original string : 1garvit2arya3
+The digits string is : 123
+Q.22) Write a program to Split a string on last occurrence of delimiter
+A) Python3 code to demonstrate Split on last occurrence of delimiter using rsplit()
+# initializing string
+test_string = "data, is, good, better, and best"
+# printing original string
+print("The original string : " + str(test_string))
+# using rsplit()
+# Split on last occurrence of delimiter
+res = test_string.rsplit(', ', 1)
+# print result
+print("The post-split list at the last comma : " + str(res))
+Output :
+The original string : data, is, good, better, and best
+The post-split list at the last comma : ['data, is, good, better', 'and best']
+Q.23) How will you Get the string after occurrence of a given substring
+A) The partition function can be used to perform this task in which we just return the part of partition occurring after the partition word.
+# initializing string
+test_string = "Python is best for data" # initializing split word
+spl_word = 'best'
+ 
+# printing original string
+print("The original string : " + str(test_string))
+# printing split string
+print("The split string : " + str(spl_word))
+# using partition()
+# Get String after substring occurrence
+res = test_string.partition(spl_word)[2]
+# print result
+print("String after the substring occurrence : " + res)
+Q.24) Given a string, write a Python program to check if the string is a valid email address or not.
+A) Python program to validate an Email :
+import re
+# Make a regular expression
+# for validating an Email
+regex = '^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$' # Define a function for
+# for validating an Email
+def check(email):
+# pass the regular expression
+# and the string in search() method if(re.search(regex,email)):
+print("Valid Email") else:
+print("Invalid Email") # Driver Code
+if __name__ == '__main__' : # Enter the email
+email = "garvit@gmail.com" # calling run function check(email)
+email = "garvit.com" check(email)
+Q.25) Sometimes, during the string manipulation, we are into a problem where we need to pad or add leading zeroes to the
+string as per the requirements. How will you achieve this?
+A) Program to add leading zeros:
+# initializing string
+test_string = ‘GAP’
+# printing original string
+print("The original string : " + str(test_string)) # No. of zeros required
+N =4
+# using rjust()
+# adding leading zero
+res = test_string.rjust(N + len(test_string), '0')
+# print result
+print("The string after adding leading zeros : " + str(res)) The original string : GAP
+The string after adding leading zeros : 0000GAP

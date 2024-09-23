@@ -1,0 +1,100 @@
+Sprint Retrospective Agenda
+1. Welcome & Overview (5 minutes)
+Greet the team and briefly outline the goals of the retrospective.
+Recap the sprint duration, objectives, and key deliverables.
+2. Set the Stage (5-10 minutes)
+Icebreaker: A quick team-building activity or simple question (e.g., "One word to describe this sprint?").
+Working Agreement Reminder: Revisit the team’s working agreements and retrospective norms (e.g., respect, open-mindedness, etc.).
+3. Review Sprint Metrics & Achievements (10 minutes)
+Review key sprint metrics (velocity, burndown charts, defect rates, etc.).
+Discuss what was delivered during the sprint.
+Highlight any significant achievements or milestones reached.
+4. What Went Well (10-15 minutes)
+Encourage the team to share positive observations or successes from the sprint.
+Capture key points on a shared board or document.
+5. What Could Be Improved (15-20 minutes)
+Open up the floor for constructive feedback on what didn’t go as planned.
+Facilitate discussion about challenges, blockers, or any pain points encountered during the sprint.
+Ensure every team member has the chance to contribute.
+6. Root Cause Analysis (10-15 minutes)
+Pick one or two major issues and dive deeper into the underlying reasons (e.g., using techniques like "5 Whys" or "Fishbone Diagrams").
+Document these insights to inform future action items.
+7. Action Items & Improvements (15 minutes)
+Brainstorm concrete steps to improve processes or address identified problems.
+Assign responsibility for each action item, and ensure they are actionable and trackable in the next sprint.
+8. Celebrate Success (5 minutes)
+Acknowledge team or individual successes, big or small.
+Consider a fun team activity or a quick celebration of achievements.
+9. Closing & Feedback (5 minutes)
+Quick round of feedback on the retrospective session itself: what can be improved in future retrospectives?
+Thank everyone for their participation and close the meeting.
+
+Backlog Refinement Meeting Agenda
+1. Welcome & Purpose (5 minutes)
+Greet the team and explain the objective of the meeting: to refine and prioritize the product backlog to ensure it is ready for the upcoming sprints.
+Highlight any specific focus areas for this session (e.g., preparing for the next sprint, addressing high-priority items).
+2. Review of Current Sprint Progress (5 minutes)
+Quick update on how the current sprint is progressing to inform backlog refinement.
+Identify any potential spillover or incomplete work that might need re-prioritizing.
+3. Review & Clarify User Stories (20-30 minutes)
+Go through the top-priority user stories or backlog items.
+Clarify requirements with the Product Owner.
+Ask questions to ensure the team has a shared understanding.
+Refine acceptance criteria where needed.
+Break down large stories (epics) into smaller, actionable tasks if necessary.
+4. Estimate User Stories (15-20 minutes)
+Use the team's estimation method (e.g., Planning Poker, T-shirt sizing, Fibonacci sequence) to assign effort estimates to each story.
+Ensure all stories have been estimated and are sized appropriately for a sprint.
+5. Prioritize the Backlog (10 minutes)
+Review the Product Owner's prioritization of backlog items.
+Discuss any technical dependencies or risks that could impact prioritization.
+Ensure the top items in the backlog are aligned with sprint goals and business priorities.
+6. Address Technical Debt (5 minutes)
+Review and discuss any technical debt items that need attention or prioritization.
+Decide whether any technical debt should be included in the next sprint.
+7. Confirm Story Readiness (5 minutes)
+Ensure all user stories at the top of the backlog meet the Definition of Ready (DoR).
+Verify that the team is confident about pulling these stories into the next sprint.
+8. Action Items & Next Steps (5 minutes)
+Assign follow-up actions for any incomplete refinement tasks.
+Confirm when the next backlog refinement session will occur if needed before the sprint planning meeting.
+9. Closing (5 minutes)
+Gather quick feedback on the session.
+Thank the team for their contributions and close the meeting.
+
+Weekly Production Support Review Meeting Agenda
+1. Welcome & Meeting Overview (5 minutes)
+Greet the team and briefly explain the purpose of the meeting: to review production support incidents, address outstanding issues, and identify improvements.
+Outline key topics for the session (e.g., reviewing high-priority incidents, discussing recurring problems, etc.).
+2. Review of Last Week’s Incidents (10-15 minutes)
+Recap of Critical Incidents:
+Review high-priority production issues or outages from the previous week.
+Discuss their causes, resolutions, and any ongoing follow-up actions.
+Review Outstanding Issues:
+Discuss any incidents that are still unresolved or require further investigation.
+Confirm who is responsible for these and what the next steps are.
+3. Root Cause Analysis (10-15 minutes)
+For major incidents or recurring issues, perform a brief root cause analysis.
+Identify patterns or common underlying problems across incidents (e.g., specific services, configurations, or workflows).
+Document insights for future action.
+4. Mitigation & Prevention Strategies (10-15 minutes)
+Discuss preventative measures to avoid similar incidents in the future (e.g., system monitoring, code fixes, performance optimizations).
+Evaluate whether existing runbooks, alerts, or processes need to be updated.
+Assign tasks for implementing mitigations.
+5. Team Workload & Support Rotation (5-10 minutes)
+Review the current support rotation and workload distribution.
+Confirm who will be on production support for the coming week and if any adjustments are needed.
+6. Review of Production Metrics (5-10 minutes)
+Analyze key production metrics (e.g., uptime, error rates, response times).
+Identify areas for improvement based on performance indicators.
+Discuss any actions required to maintain or improve service quality.
+7. Feedback & Continuous Improvement (5 minutes)
+Open the floor for team feedback on the production support process.
+Discuss any suggestions for improving incident management, documentation, or team collaboration.
+8. Action Items & Next Steps (5 minutes)
+Summarize the key action items and who is responsible for each task.
+Set clear expectations for follow-up before the next meeting.
+Confirm the date and time for the next review meeting.
+9. Closing Remarks (5 minutes)
+Thank the team for their contributions and efforts in production support.
+Encourage a proactive approach to preventing issues and maintaining system health.

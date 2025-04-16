@@ -1,0 +1,457 @@
+### **Senior Java Developer Interview Questions and Answers**
+
+#### **Core Java Questions**
+1. **What are the key differences between `HashMap` and `ConcurrentHashMap`?**
+   - `HashMap` is **not thread-safe**, whereas `ConcurrentHashMap` allows concurrent access to its entries using a segment-based locking mechanism.
+   - `HashMap` allows **one `null` key** and multiple `null` values, while `ConcurrentHashMap` **does not allow `null` keys or values**.
+   - `ConcurrentHashMap` has better performance in multithreading compared to using a `synchronized` `HashMap`.
+
+2. **Explain the difference between `equals()` and `hashCode()` methods in Java.**
+   - `equals()` is used to compare the content of objects.
+   - `hashCode()` provides an integer representation of an object to optimize hash-based collections.
+   - If two objects are equal (`equals()` returns `true`), they must have the same `hashCode()`. However, the reverse is not necessarily true.
+
+3. **What is the difference between checked and unchecked exceptions?**
+   - **Checked exceptions** (e.g., `IOException`) must be handled at compile-time using `try-catch` or `throws`.
+   - **Unchecked exceptions** (e.g., `NullPointerException`) are runtime exceptions that do not need to be declared or caught.
+
+4. **How does Java achieve memory management using Garbage Collection (GC)?**
+   - Java uses **Automatic Garbage Collection (GC)** to remove unused objects.
+   - It works in **generations**: Young, Old (Tenured), and Permanent (Metaspace in Java 8+).
+   - Different GC algorithms include:
+     - **Serial GC** (for single-threaded applications)
+     - **Parallel GC** (for multi-threaded applications)
+     - **G1 GC** (balanced collection, introduced in Java 7)
+     - **ZGC/Shenandoah GC** (low-latency collectors)
+
+#### **Multithreading & Concurrency**
+5. **What is the difference between `synchronized` and `ReentrantLock`?**
+   - `synchronized` is a **built-in mechanism** for thread safety, while `ReentrantLock` is more flexible with advanced features like **tryLock()**, **fairness policies**, and **interruptibility**.
+   - `ReentrantLock` must be explicitly unlocked (`unlock()`), whereas `synchronized` releases the lock automatically.
+
+6. **What is a thread pool, and why is it used?**
+   - A **thread pool** manages multiple threads efficiently to **reuse** them, reducing the overhead of thread creation.
+   - Java provides `ExecutorService` (e.g., `FixedThreadPool`, `CachedThreadPool`) for thread pooling.
+
+7. **What are deadlocks, and how can they be avoided?**
+   - Deadlock occurs when two or more threads are blocked forever, waiting for each other’s resources.
+   - To avoid deadlocks:
+     - **Acquire locks in a consistent order**.
+     - **Use tryLock() with timeout**.
+     - **Minimize lock contention**.
+
+#### **Spring Framework & Microservices**
+8. **What is the difference between `@Component`, `@Service`, and `@Repository` in Spring?**
+   - `@Component`: Generic stereotype for Spring-managed beans.
+   - `@Service`: Indicates a service layer bean.
+   - `@Repository`: Specialized for data access layers, adds exception translation.
+
+9. **Explain how Spring Boot’s auto-configuration works.**
+   - Uses `@EnableAutoConfiguration` and classpath scanning to automatically configure beans.
+   - Spring Boot **scans dependencies** and enables features (e.g., `HikariCP` for database pooling).
+   - Can be customized using `application.properties` or disabling specific configurations.
+
+10. **How do you secure REST APIs in Spring Boot?**
+    - **JWT (JSON Web Token)** for stateless authentication.
+    - **OAuth2/OpenID Connect** for authorization.
+    - **Spring Security** with method-level security (`@PreAuthorize`, `@Secured`).
+    - **API rate limiting** using `Bucket4j` or `Spring Cloud Gateway`.
+
+#### **JPA & Hibernate**
+11. **What is the difference between `fetchType.LAZY` and `fetchType.EAGER` in JPA?**
+    - `LAZY`: Loads the associated entity **only when accessed**.
+    - `EAGER`: Loads the associated entity **immediately**.
+    - `EAGER` can cause **performance issues** due to unnecessary data loading.
+
+12. **What are different caching levels in Hibernate?**
+    - **First-level cache**: Session-level, enabled by default.
+    - **Second-level cache**: Shared across sessions, requires configuration (`EhCache`, `Caffeine`, `Redis`).
+    - **Query cache**: Caches query results to avoid repetitive queries.
+
+#### **Design Patterns & Best Practices**
+13. **What is the Singleton pattern, and how do you implement it in Java?**
+    - Singleton ensures **only one instance** of a class.
+    - Implementation using `enum` (preferred way):
+      ```java
+      public enum Singleton {
+          INSTANCE;
+          public void doSomething() { }
+      }
+      ```
+
+14. **What is the Factory pattern, and how is it used?**
+    - Factory provides **an interface for creating objects** without exposing instantiation logic.
+    - Example:
+      ```java
+      interface Shape { void draw(); }
+      class Circle implements Shape { public void draw() { System.out.println("Circle"); } }
+      class ShapeFactory {
+          public static Shape getShape(String type) {
+              if (type.equals("CIRCLE")) return new Circle();
+              return null;
+          }
+      }
+      ```
+
+15. **How do you implement Dependency Injection (DI) in Java?**
+    - Using **Spring Framework**:
+      ```java
+      @Service
+      public class MyService {
+          private final MyRepository repository;
+          @Autowired
+          public MyService(MyRepository repository) {
+              this.repository = repository;
+          }
+      }
+      ```
+
+#### **Java 8+ Features**
+16. **What are functional interfaces in Java 8?**
+    - An interface with **only one abstract method** (e.g., `Runnable`, `Callable`).
+    - Java provides built-in functional interfaces (`Predicate`, `Consumer`, `Supplier`).
+    - Example:
+      ```java
+      @FunctionalInterface
+      interface MyFunction {
+          void execute();
+      }
+      ```
+
+17. **What is the difference between `map()` and `flatMap()` in Java Streams?**
+    - `map()`: Transforms elements **one-to-one**.
+    - `flatMap()`: Flattens nested collections **one-to-many**.
+
+18. **What is the purpose of `Optional` in Java 8?**
+    - Used to **avoid `NullPointerException`**.
+    - Example:
+      ```java
+      Optional<String> opt = Optional.ofNullable(null);
+      System.out.println(opt.orElse("Default Value"));
+      ```
+
+#### **Performance Optimization**
+19. **How would you improve the performance of a high-load Java application?**
+    - Use **thread pools** instead of creating new threads.
+    - Optimize **database queries** (e.g., indexing, caching).
+    - Use **efficient data structures** (e.g., `ArrayList` vs. `LinkedList`).
+    - Profile and remove bottlenecks using **JProfiler, VisualVM**.
+
+20. **What tools do you use for monitoring and profiling Java applications?**
+    - **JConsole, VisualVM** for memory analysis.
+    - **JMeter, Gatling** for performance testing.
+    - **Spring Boot Actuator** for application monitoring.
+
+---
+
+### **Coding Questions for a Senior Java Developer Interview**
+Here are some hands-on coding problems covering data structures, algorithms, multithreading, and system design.
+
+---
+
+### **1. Reverse a String Without Using Built-in Functions**
+**Problem:**  
+Write a method to reverse a given string without using built-in reverse functions.
+
+**Example:**
+```java
+Input: "Java Developer"
+Output: "repoleveD avaJ"
+```
+
+**Solution:**
+```java
+public class ReverseString {
+    public static String reverse(String str) {
+        char[] chars = str.toCharArray();
+        int left = 0, right = chars.length - 1;
+        while (left < right) {
+            char temp = chars[left];
+            chars[left] = chars[right];
+            chars[right] = temp;
+            left++;
+            right--;
+        }
+        return new String(chars);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(reverse("Java Developer"));
+    }
+}
+```
+
+---
+
+### **2. Find the First Non-Repeating Character**
+**Problem:**  
+Write a function that returns the first non-repeating character in a string.
+
+**Example:**
+```java
+Input: "aabbcdeff"
+Output: 'c'
+```
+
+**Solution:**
+```java
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+public class FirstNonRepeating {
+    public static char firstUniqueChar(String str) {
+        Map<Character, Integer> charCount = new LinkedHashMap<>();
+        
+        for (char ch : str.toCharArray()) {
+            charCount.put(ch, charCount.getOrDefault(ch, 0) + 1);
+        }
+
+        for (Map.Entry<Character, Integer> entry : charCount.entrySet()) {
+            if (entry.getValue() == 1) return entry.getKey();
+        }
+
+        return '_'; // Return '_' if no unique character is found
+    }
+
+    public static void main(String[] args) {
+        System.out.println(firstUniqueChar("aabbcdeff"));
+    }
+}
+```
+
+---
+
+### **3. Find the Missing Number in an Array**
+**Problem:**  
+Given an array containing `n` distinct numbers taken from `0, 1, 2, ..., n`, find the missing number.
+
+**Example:**
+```java
+Input: [3, 0, 1]
+Output: 2
+```
+
+**Solution:** *(Using XOR property)*
+```java
+public class MissingNumber {
+    public static int findMissing(int[] nums) {
+        int n = nums.length;
+        int xor = n;
+        for (int i = 0; i < n; i++) {
+            xor ^= i ^ nums[i];
+        }
+        return xor;
+    }
+
+    public static void main(String[] args) {
+        int[] nums = {3, 0, 1};
+        System.out.println(findMissing(nums));
+    }
+}
+```
+
+---
+
+### **4. Detect a Loop in a Linked List**
+**Problem:**  
+Write a function to detect a cycle in a linked list using Floyd’s Cycle Detection Algorithm.
+
+**Solution:**
+```java
+class ListNode {
+    int val;
+    ListNode next;
+    ListNode(int x) { val = x; next = null; }
+}
+
+public class DetectLoop {
+    public static boolean hasCycle(ListNode head) {
+        ListNode slow = head, fast = head;
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+            if (slow == fast) return true;
+        }
+        return false;
+    }
+}
+```
+
+---
+
+### **5. Implement a Thread-safe Singleton Pattern**
+**Problem:**  
+Design a thread-safe singleton class.
+
+**Solution:**
+```java
+public class Singleton {
+    private static volatile Singleton instance;
+
+    private Singleton() {}
+
+    public static Singleton getInstance() {
+        if (instance == null) {
+            synchronized (Singleton.class) {
+                if (instance == null) {
+                    instance = new Singleton();
+                }
+            }
+        }
+        return instance;
+    }
+}
+```
+
+---
+
+### **6. Print Numbers in Order Using Multiple Threads**
+**Problem:**  
+Create three threads:  
+- Thread 1 prints `1`
+- Thread 2 prints `2`
+- Thread 3 prints `3`
+- Repeat this sequence continuously.
+
+**Solution:**
+```java
+import java.util.concurrent.Semaphore;
+
+public class PrintInOrder {
+    private static final Semaphore sem1 = new Semaphore(1);
+    private static final Semaphore sem2 = new Semaphore(0);
+    private static final Semaphore sem3 = new Semaphore(0);
+
+    static class Task implements Runnable {
+        private final int number;
+        private final Semaphore current;
+        private final Semaphore next;
+
+        public Task(int number, Semaphore current, Semaphore next) {
+            this.number = number;
+            this.current = current;
+            this.next = next;
+        }
+
+        public void run() {
+            while (true) {
+                try {
+                    current.acquire();
+                    System.out.print(number + " ");
+                    Thread.sleep(500);
+                    next.release();
+                } catch (InterruptedException e) {
+                    Thread.currentThread().interrupt();
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        new Thread(new Task(1, sem1, sem2)).start();
+        new Thread(new Task(2, sem2, sem3)).start();
+        new Thread(new Task(3, sem3, sem1)).start();
+    }
+}
+```
+
+---
+
+### **7. Implement LRU (Least Recently Used) Cache**
+**Problem:**  
+Design an LRU cache using Java’s `LinkedHashMap`.
+
+**Solution:**
+```java
+import java.util.LinkedHashMap;
+import java.util.Map;
+
+class LRUCache<K, V> extends LinkedHashMap<K, V> {
+    private final int capacity;
+
+    public LRUCache(int capacity) {
+        super(capacity, 0.75f, true);
+        this.capacity = capacity;
+    }
+
+    @Override
+    protected boolean removeEldestEntry(Map.Entry<K, V> eldest) {
+        return size() > capacity;
+    }
+
+    public static void main(String[] args) {
+        LRUCache<Integer, String> cache = new LRUCache<>(3);
+        cache.put(1, "A");
+        cache.put(2, "B");
+        cache.put(3, "C");
+        cache.get(1);
+        cache.put(4, "D"); // This will remove key 2 (Least Recently Used)
+        System.out.println(cache);
+    }
+}
+```
+
+---
+
+### **8. Implement Producer-Consumer Using BlockingQueue**
+**Problem:**  
+Implement the Producer-Consumer problem using `BlockingQueue`.
+
+**Solution:**
+```java
+import java.util.concurrent.BlockingQueue;
+import java.util.concurrent.LinkedBlockingQueue;
+
+class Producer implements Runnable {
+    private final BlockingQueue<Integer> queue;
+
+    public Producer(BlockingQueue<Integer> queue) {
+        this.queue = queue;
+    }
+
+    public void run() {
+        try {
+            for (int i = 1; i <= 5; i++) {
+                System.out.println("Produced: " + i);
+                queue.put(i);
+                Thread.sleep(1000);
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+
+class Consumer implements Runnable {
+    private final BlockingQueue<Integer> queue;
+
+    public Consumer(BlockingQueue<Integer> queue) {
+        this.queue = queue;
+    }
+
+    public void run() {
+        try {
+            while (true) {
+                Integer item = queue.take();
+                System.out.println("Consumed: " + item);
+                Thread.sleep(1500);
+            }
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
+    }
+}
+
+public class ProducerConsumerExample {
+    public static void main(String[] args) {
+        BlockingQueue<Integer> queue = new LinkedBlockingQueue<>(2);
+        new Thread(new Producer(queue)).start();
+        new Thread(new Consumer(queue)).start();
+    }
+}
+```
+
+---
+
+
+Would you like additional scenario-based questions or coding challenges? 🚀
